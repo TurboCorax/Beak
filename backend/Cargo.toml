@@ -3,4 +3,21 @@ name = "backend"
 version = "0.1.0"
 edition = "2024"
 
+[workspace]
+members = [
+    "migration",
+    ".",
+]
+
 [dependencies]
+sea-orm = { version = "1.1.0", features = ["sqlx-postgres", "runtime-tokio", "macros" ] }
+tokio={version = "1.45.0",features = ["rt-multi-thread"]}
+axum = "0.8.4"
+async-std = { version = "1", features = ["attributes", "tokio1"] }
+
+[dependencies.sea-orm-migration]
+version = "1.1.0"
+features = [
+     "runtime-tokio-rustls",  # `ASYNC_RUNTIME` feature
+     "sqlx-postgres",         # `DATABASE_DRIVER` feature
+]
